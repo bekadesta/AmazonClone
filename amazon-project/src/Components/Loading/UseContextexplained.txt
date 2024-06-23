@@ -1,0 +1,116 @@
+this is my contextProvider.jsx
+
+import React, {useState, createContext, useContext} from 'react'
+const colorContext = createContext()
+
+
+
+
+- The createContext function is used to create a context object called
+colorContext
+- colorContext object serves as a channel through which components can access 
+shared data
+
+
+
+
+export const useColor =() =>{
+    return useContext(colorContext)
+}
+
+
+- useColor is a CUSTOM HOOK that utilizes the useContext hook to access
+shared data from colorContext
+- The export Keyword makes it accessible for other components to use
+- useContext(colorContext) retrieves the valur provied by the nearest 
+colorContext.Provider in the component ThemeProvider
+
+export const ThemeProvider = ({children}=> {
+    const [color, setcolor] = useState('light')
+
+    const colorToggler =()=> {
+        setcolor((pre)=>pre==='light'?'dark':'light')
+    }
+
+    return (
+        <colorContext.Provider value={{color, colorToggler}}
+            {children}
+        </colorContext.Provider>
+    )
+})
+
+- The ThemeProvider acts as the provider of the shared data.
+- It wraps its children components and provides the color and colorToggler
+values to them via colorContext.Provider
+- Inside the ThemeProvider, the color state is managed using useState
+colorToggler is defined to toggle the color between light and dark
+- colorContext.Provider is rendered, wrapping the children components
+it takes the value prop, whch is an object containing the color and colorToggler
+values. which makes these values available to all components nested within
+the ThemeProvider
+
+
+this is componentA
+
+import React from 'react'
+import {useColor} from './contextProvider'
+
+function componentA() {
+    const {colorToggler} = useColor()
+  return (
+    <div>
+        <h1>Component A</h1>
+        <button onclick={colorToggler}>colorToggler</button>
+    </div>
+  )
+}
+export default componentA
+
+- The useColorhook is used to access the colorToggler value from the context
+- When the button is clicked the colorToggler is invoked, which updates the color value
+in the ThemeProvider component
+
+
+
+
+this is componentB
+
+import React from 'react'
+import {useColor} from './contextProvider'
+
+function componentB() {
+    const {color} = useColor()
+  return(
+    <div className={color}>
+        <h1>Component B</h1>
+        <h2>Color is {color}</h1>
+    </div>
+  )
+}
+export default componentB
+
+- The useColor hook is used to access the color value from the context
+- The color value is then used to dynamically apply a CSS value to the div element
+which allows the component's styling to be determined by the shared color value
+
+
+
+this is App.jsx
+ import React from 'react'
+ import componentA from './componentA'
+ import componentB from './componentB'
+ import {ThemeProvider} from './contextProvider'
+
+ function App() {
+    retutn(
+        <ThemeProvider>
+        <componentA/>
+        <componentB/>
+        </ThemeProvider>
+    )
+ }
+
+ export default App
+
+- The ThemeProvider provides shared data to its child components using contextAPI
+allowing them to utilize shared data

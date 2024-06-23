@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.stickyheader {
+    position: sticky;
+    top: 0px;
+    z-index: 100;
+}
+
+.headercontainer {
+    background-color: black;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: white;
+    height: 50px;
+}
+
+.logocontainer {
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    max-width: 110px; 
+}
+
+.logocontainer img{
+    width: 90%;
+    padding-top: 5px;
+    gap: 10px;
+    margin-left: 10px;
+    vertical-align: middle;
+    object-fit: contain;
+    
+}
+
+.delivery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    padding-right: 20%;
+}
+
+.delivery p {
+    font-size: 10px;
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    flex: 1;
+
+}
+
+.searchbar select,
+ .searchbar input {
+    padding: 10px;
+    font-weight: bold;
+    outline: 1px solid white;
+}
+
+.searchbar select {
+    border: none;
+}
+
+.searchbar input {
+    border: 1px solid white;
+    width: 100%;
+    margin-right: -2px;
+}
+
+.searchbar svg {
+    padding: 19px;
+    background-color: #febd69;
+    color: #1a1a1a;
+}
+
+.searchbar svg:hover {
+    background-color: #febd69;
+}
+
+.searchbar:focus-within {
+    border: 3px solid rgb(235, 161, 173)
+}
+
+
+.ordercontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 450px;
+    gap: 5px;
+} 
+
+.ordercontainer a {
+    text-decoration: none;
+    color: white;
+}
+
+.ordercontainer p {
+    font-size: 12px;
+}
+.ordercontainer span {
+    font-size: smaller;
+}
+
+.flag {
+    width: 100px;
+    display: flex;
+    /* padding-left: 10px; */
+    padding-right: 20%;
+}
+
+.flag select {
+    background-color: #1a1a1a;
+    border: none;
+    color: white;
+}
+
+.flag img{
+    width: 40%;
+}
+
+.cart {
+    position: relative;
+}
+
+.cart span {
+    position: absolute;
+    font-weight: bold;
+    /* top: -6px; */
+    font-size: 20px;
+    background-color: black;
+    left: 16px;
+    color: orange;
+}
+
+.ordercontainer a:hover, .delivery:hover, .logocontainer a:hover {
+    border: 1px solid white;
+    border-radius: 3px;
+}
+
+
+.lowerheader {   
+    background-color: #232f3e;
+    color: white
+}
+.lowerheader ul {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+.lowerheader ul li {
+    padding: 8px;
+
+}
+.lowerheader ul li:first-child {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+
+@media screen and (max-width: 570px) {
+    .headercontainer {
+        display: flex;
+        flex-direction: column !important;
+        height: auto;
+
+    }
+    .lowerheader ul li:not(:first-child){
+        display: none;
+    }
+    .ordercontainer {
+        display: none;
+    }
+}

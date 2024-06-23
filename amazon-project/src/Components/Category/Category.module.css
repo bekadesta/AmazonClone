@@ -1,0 +1,49 @@
+.block {
+    height: 390px;
+    width: 330px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.block img {
+    width: 100%;
+    object-fit: contain;
+    max-height: 250px;
+    padding: 0px 10px;
+    padding-top: 23px;
+
+}
+
+.block a {
+    text-decoration: none;
+    color: black;
+}
+
+.block h2, .block p {
+    padding: 5px;
+    text-align: center;
+    margin-left: 15px;
+}
+
+.block p {
+    font-size: 20px;
+    font-weight: bold;
+    color: grey
+}
+
+.container {
+    position: relative;
+    margin-top: -10px;
+    display: flex;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    place-items: center;
+    max-width: 1600px;
+    gap: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+
